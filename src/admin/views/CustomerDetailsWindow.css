@@ -1,0 +1,125 @@
+.customer-details-management-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.customer-details-management-content h2,
+h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.customer-details-item {
+  background-color: #F1F4F7;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.customer-details-item:hover {
+  transform: translateY(-5px); 
+  border-color: #007bff; 
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
+}
+
+.customer-details-item p {
+  font-size: 14px;
+}
+
+.active-status-customer {
+  background-color: #F1F4F7;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.active-status-customer:hover {
+  transform: translateY(-5px);
+  border-color: #007bff;
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
+}
+
+.active-status-customer h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.active-status-customer label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.active-status-customer label span {
+  flex: 1;
+  text-align: center;
+}
+
+.active-status-customer label .react-switch-bg {
+  margin-left: 10px; 
+}
+
+.back-button-2 {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button-2:hover {
+  background-color: #b2e1a6;
+}
+
+.hamburger-icon {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .customer-details-management-content {
+    margin-left: 0px; 
+  }
+
+  .customer-details-item {
+    width: 100%;
+  }
+
+  .active-status-customer {
+    width: 100%;
+  }
+
+  .customer-details-item p {
+    font-size: 12px;
+  }
+
+}

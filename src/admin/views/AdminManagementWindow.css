@@ -1,0 +1,110 @@
+.admin-management-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 350px;
+  margin-right: 80px;
+  padding: 20px;
+}
+
+.admin-management-content h2 {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.admin-list {
+  overflow-y: auto;
+  width: 90%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-item {
+  width: 100%;
+  background-color: #F1F4F7;
+  margin-bottom: 20px;
+  border: 1px solid transparent; 
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s; 
+}
+
+.admin-item:hover {
+  transform: translateY(-5px); 
+  border-color: #007bff; 
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
+}
+
+.button-container-3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%; 
+}
+
+.view-admin {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.view-admin:hover {
+  background-color: #b2e1a6;
+}
+
+.admin-item p {
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+.admin-item p:hover {
+  color: rgb(24, 74, 9);
+}
+
+.hamburger-icon {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .admin-management-content {
+    margin-left: 0;
+    margin-right: 50;
+  }
+
+  .admin-list {
+    width: 100%;
+  }
+
+  .sidebar-icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .sidebar-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}

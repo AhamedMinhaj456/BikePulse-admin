@@ -1,0 +1,379 @@
+.admin-content {
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px;
+  margin-right: 100px;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.real-time {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.stats-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  position: relative;
+  background: linear-gradient(45deg, #052846, #ffffff);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  margin: 10px;
+  max-width: 300px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  overflow: hidden;
+}
+
+.stat-card h3 {
+  font-size: 14px; 
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #052846 30%, #ffffff 70%);
+  border-image-slice: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 5px;
+  border: 10px solid transparent;
+  border-image: linear-gradient(45deg, #117a85, #ffffff);
+  border-image-slice: 1;
+  z-index: -1;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover::after {
+  transform: scale(1.05);
+}
+
+.stat-card:hover {
+  background: #caeaf2;
+  transform: translateY(-5px); 
+}
+
+.chart-card {
+  position: relative;
+  background: linear-gradient(45deg, #61b5ff, #ffffff);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  flex: 1;
+  margin: 10px;
+  max-width: 320px;
+  transition: transform 0.3s, background-color 0.3s;
+  overflow: hidden;
+}
+
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  border: 4px solid;
+  border-image: linear-gradient(135deg, #d0e1f9 40%, #4a90e2 60%);
+  border-image-slice: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.chart-card::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 8px;
+  border: 12px solid transparent;
+  border-image: linear-gradient(135deg, #d0e1f9, #4a90e2);
+  border-image-slice: 1;
+  z-index: -1;
+  transition: transform 0.3s;
+}
+
+.chart-card:hover::after {
+  transform: scale(1.07);
+}
+
+.chart-card:hover {
+  background: #dfedf0;
+  transform: translateY(-5px); 
+}
+
+.charts-overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(120deg, #f0f4f8, #eef3f8);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 20px; 
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.charts-overview:hover {
+  background: linear-gradient(120deg, #e1e9f0, #d4d5d6);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.hamburger-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 24px;
+  color: #2c3e50;
+}
+
+.hamburger-icon:hover {
+  color: #18bc9c;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+  .admin-content {
+    margin-left: 0;
+  }
+
+  .stats-overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+  }
+
+  .stat-card {
+    flex-basis: calc(50% - 20px); 
+    margin: 10px;
+    padding: 15px;
+    max-width: 300px;
+  }
+
+  .stat-card h3 {
+    font-size: 12px; 
+  }
+
+  .calendar-overview {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .calendar h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .schedule h2 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .schedule-input {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .schedule-input input {
+    margin-bottom: 10px;
+  }
+
+  .schedule-input button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .schedules li {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .schedules li span {
+    margin-bottom: 10px;
+  }
+
+  .calendar-overview .rbc-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .calendar-overview .rbc-toolbar button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .calendar-overview .rbc-toolbar .rbc-btn-group {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.calendar-overview {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(120deg, #f0f4f8, #eef3f8);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.calendar-overview:hover {
+  background: linear-gradient(120deg, #e1e9f0, #d4d5d6);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.calendar-overview .calendar {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.calendar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.schedule {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.schedule h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.schedule-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.schedule-input input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #e1e9f0;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.schedule-input input:focus {
+  border-color: #61b5ff;
+  outline: none;
+}
+
+.schedule-input button {
+  padding: 10px 20px;
+  background: #61b5ff;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.schedule-input button:hover {
+  background: #b2e1a6;
+}
+
+.schedules {
+  list-style: none;
+  padding: 0;
+}
+
+.schedules li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #e1e9f0;
+  transition: background-color 0.3s;
+}
+
+.schedules li.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.schedules li:hover {
+  background: #f0f4f8;
+}
+
+.schedules li span {
+  flex: 1;
+  cursor: pointer;
+}
+
+.schedules li button {
+  background: #36d8f4;
+  border: none;
+  border-radius: 15px;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.schedules li button:hover {
+  background: #b2e1a6;
+}
+
+.selected-event {
+  background-color: #61b5ff !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+

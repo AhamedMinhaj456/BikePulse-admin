@@ -1,0 +1,112 @@
+.account-setting-content {
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px;
+  margin-right: 100px;
+  padding: 20px;
+}
+
+.account-setting-content h2 {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.account-setting-form {
+  width: 500px;
+  margin: auto;
+  max-width: 100%;
+  transition: transform 0.3s; 
+}
+
+.account-setting-form:hover {
+  background-color: #eaeff3;
+}
+
+.account-setting-form.clicked {
+  transform: translateY(-20px); 
+}
+
+.setting-button {
+  background-color: #45a049;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.setting-button:hover {
+  background-color: #9dc8ec;
+}
+
+.setting-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.setting-box:hover {
+  background-color: #e8e8e8; 
+}
+
+.setting-box h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+
+
+.setting-box label {
+  display: block;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.setting-box input[type="checkbox"] {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.setting-box select {
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.account-setting-form .setting-button {
+  width: 100%;
+}
+
+.hamburger-icon {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .account-setting-content {
+    margin-left: 0;
+  }
+
+  .account-setting-form {
+    width: 100%;
+  }
+}
