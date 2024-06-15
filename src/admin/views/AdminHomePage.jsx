@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import './AdminHomePage.css';
 import axios from 'axios';
-import logo from '../../assets/newlogo.png';  // Import the logo image
+// import logo from '../../assets/newlogo.png';  
 
 const AdminHomePage = () => {
   const navigate = useNavigate();
@@ -56,21 +56,21 @@ const AdminHomePage = () => {
 
   return (
     <div className="admin-home-page">
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-content">
           <img src={logo} alt="Logo" className="logo" />
           <h1>Bike Service Platform - Admin Portal</h1>
         </div>
-      </nav>
-      <h2 className="page-title">
+      </nav> */}
+      <h2 className="page-title-home">
         {letters.map((char, index) => (
           <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
             {char === ' ' ? '\u00A0' : char}
           </span>
         ))}
       </h2>
-      <div className="container">
-        <div className="login-section">
+      <div className="container-home">
+        <div className="login-section-home">
           <h2>{isSignUp ? 'Hi There! Already have an account?' : "Hi There!, Don't have an account?"}</h2>
           <p>{isSignUp ? 'Click the Emoji to Sign In' : "Click the Emoji to Sign Up"}</p>
           <div className="emoji" onClick={() => setIsSignUp(!isSignUp)}>
@@ -78,7 +78,7 @@ const AdminHomePage = () => {
           </div>
         </div>
         {isSignUp ? (
-          <div className="signup-section">
+          <div className="signup-section-home">
             <h2>Sign Up</h2>
             <form onSubmit={saveAdmin}>
               <input
@@ -113,7 +113,7 @@ const AdminHomePage = () => {
             </form>
           </div>
         ) : (
-          <div className="signup-section">
+          <div className="signup-section-home">
             <h2>Login</h2>
             <form onSubmit={loginAdmin}>
               <input
