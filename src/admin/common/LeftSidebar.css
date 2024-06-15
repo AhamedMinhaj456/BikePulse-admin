@@ -8,6 +8,7 @@
   background: linear-gradient(135deg, #a0a8ab, #bfeff8, #75cdeb, #3d98f3);
   color: #fff;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 2; 
 }
 
 .logo-container {

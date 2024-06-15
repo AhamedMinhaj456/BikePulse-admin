@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  z-index: 1;
 }
 
 .admin-details-management-content h2,h3 {
