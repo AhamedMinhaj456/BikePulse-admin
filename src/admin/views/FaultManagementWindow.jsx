@@ -254,9 +254,9 @@ const FaultManagementWindow = () => {
                     <td>{model.editedDate}</td>
                     <td>
                       {selectedFaultId === model.id ? (
-                        <button className='action-button' onClick={handleSaveEdit}>Save</button>
+                        <button className='action-button-fault' onClick={handleSaveEdit}>Save</button>
                       ) : (
-                        <button className='action-button' onClick={() => handleEdit(model.id)}>Edit</button>
+                        <button className='action-button-fault' onClick={() => handleEdit(model.id)}>Edit</button>
                       )}
                     </td>
                   </tr>
@@ -266,9 +266,9 @@ const FaultManagementWindow = () => {
             <div >
               <h3>Add New Bike Model</h3>
               <form onSubmit={handleAddBikeModel}>
-                <input className='add-input' type="text" name="newModelName" placeholder="Enter Model Name" />
-                <input className='add-input' type="text" name="enteredBy" placeholder="Entered By" />
-                <button className='add-button' type="submit">Add Model</button>
+                <input className='input-fault' type="text" name="newModelName" placeholder="Enter Model Name" />
+                <input className='input-fault' type="text" name="enteredBy" placeholder="Entered By" />
+                <button className='add-button-fault' type="submit">Add Model</button>
               </form>
             </div>
           </div>
@@ -300,9 +300,9 @@ const FaultManagementWindow = () => {
                     <td>{part.editedDate}</td>
                     <td>
                       {selectedFaultId === part.id ? (
-                        <button className='action-button' onClick={handleSaveEdit}>Save</button>
+                        <button className='action-button-fault' onClick={handleSaveEdit}>Save</button>
                       ) : (
-                        <button className='action-button' onClick={() => handleEdit(part.id)}>Edit</button>
+                        <button className='action-button-fault' onClick={() => handleEdit(part.id)}>Edit</button>
                       )}
                     </td>
                   </tr>
@@ -312,9 +312,9 @@ const FaultManagementWindow = () => {
             <div>
               <h3>Add New Bike Part</h3>
               <form onSubmit={handleAddBikePart}>
-                <input className='add-input' type="text" name="newPartName" placeholder="Enter name" />
-                <input className='add-input' type="text" name="enteredBy" placeholder="Entered By" />
-                <button className='add-button' type="submit">Add Part</button>
+                <input className='input-fault' type="text" name="newPartName" placeholder="Enter name" />
+                <input className='input-fault' type="text" name="enteredBy" placeholder="Entered By" />
+                <button className='add-button-fault' type="submit">Add Part</button>
               </form>
             </div>
           </div>
@@ -346,9 +346,9 @@ const FaultManagementWindow = () => {
                     <td>{shop.editedDate}</td>
                     <td>
                       {selectedFaultId === shop.id ? (
-                        <button className='action-button' onClick={handleSaveEdit}>Save</button>
+                        <button className='action-button-fault' onClick={handleSaveEdit}>Save</button>
                       ) : (
-                        <button className='action-button' onClick={() => handleEdit(shop.id)}>Edit</button>
+                        <button className='action-button-fault' onClick={() => handleEdit(shop.id)}>Edit</button>
                       )}
                     </td>
                   </tr>
@@ -358,9 +358,9 @@ const FaultManagementWindow = () => {
             <div>
               <h3>Add New Shop</h3>
               <form onSubmit={handleAddShop}>
-                <input className='add-input' type="text" name="newShopName" placeholder="Enter name" />
-                <input className='add-input' type="text" name="enteredBy" placeholder="Entered By" />
-                <button className='add-button' type="submit">Add Shop</button>
+                <input className='input-fault' type="text" name="newShopName" placeholder="Enter name" />
+                <input className='input-fault' type="text" name="enteredBy" placeholder="Entered By" />
+                <button className='add-button-fault' type="submit">Add Shop</button>
               </form>
             </div>
           </div>
@@ -373,7 +373,7 @@ const FaultManagementWindow = () => {
               <div key={fault.id} className="fault-item">
                 <form className="fault-form">
                   <label>
-                    <input
+                    <input className='input-fault'
                       type="checkbox"
                       checked={fault.tickSelected}
                       onChange={() => handleShowDetailsToggle(fault.id)}
@@ -381,7 +381,7 @@ const FaultManagementWindow = () => {
                     Show Details
                   </label>
                   <label>{`Fault ${fault.id}:`}</label>
-                  <input
+                  <input className='input-fault'
                     type="text"
                     value={fault.name}
                     onChange={(e) => handleInputChange(fault.id, 'name', e.target.value)}
@@ -450,12 +450,12 @@ const FaultManagementWindow = () => {
             ))}
             <div className="fault-management-buttons">
               <button
-                className={`edit-button ${editMode ? 'active' : ''}`}
+                className={`edit-button-fault ${editMode ? 'active' : ''}`}
                 onClick={() => setEditMode(!editMode)}
               >
                 {editMode ? 'Cancel' : 'Edit'}
               </button>
-              <button className="save-button" onClick={handleSave} disabled={!editMode}>
+              <button className="save-button-fault" onClick={handleSave} disabled={!editMode}>
                 Save
               </button>
             </div>
@@ -464,7 +464,7 @@ const FaultManagementWindow = () => {
 
         {step < 4 && (
           <div className="fault-management-buttons">
-            <button className="next-button" onClick={handleNextStep}>Next</button>
+            <button className="next-button-fault" onClick={handleNextStep}>Next</button>
           </div>
         )}
       </div>

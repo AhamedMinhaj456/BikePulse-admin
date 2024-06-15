@@ -18,10 +18,8 @@ const SubscriptionPlansManagementWindow = () => {
     fetchData();
   }, []);
 
-  // Backend connection: Function to fetch user data from the backend
   const fetchData = async () => {
     try {
-      // Example using axios:
       const response = await axios.get('http://localhost:8096/subscriptionPlan/subscriptionPlan');
       setPlans(response.data);
     } catch (error) {
@@ -37,11 +35,8 @@ const SubscriptionPlansManagementWindow = () => {
     );
   };
 
-  // Backend connection: Function to save plans to the backend
   const handleSave = () => {
     setEditMode(false);
-    // Backend developer: Add code here to send plans to the backend and save them
-    // Example:
     axios.put('http://localhost:8096/subscriptionPlan/updateMultipleSubscriptionPlans', plans)
       .then(response => {
         alert('Plan Updated Successfullly!');
@@ -99,13 +94,13 @@ const SubscriptionPlansManagementWindow = () => {
 
       <div className="subscription-plans-management-content">
 
-        <div className='add-plan-wrapper'>
+        <div className='add-plan-wrapper-subscription'>
           <h2 className='subscription-management-heading'>Subscription Plans Management</h2>
-          <div className='add-plan'>
-            <form className="plan-form" onSubmit={handleFormSubmit}>
+          <div className='add-plan-subscription'>
+            <form className="plan-form-subscription" onSubmit={handleFormSubmit}>
               <h3 className='subscription-management-heading'>Add New Subscription Plan</h3>
               <label>Name</label>
-              <input
+              <input className='input-subscription'
                 type="text"
                 name="subscriptionPlanName"
                 value={newPlan.subscriptionPlanName}
@@ -113,7 +108,7 @@ const SubscriptionPlansManagementWindow = () => {
               />
               <br />
               <label>Description:</label>
-              <input
+              <input className='input-subscription'
                 type="text"
                 name="subscriptionPlanDescription"
                 value={newPlan.subscriptionPlanDescription}
@@ -121,13 +116,13 @@ const SubscriptionPlansManagementWindow = () => {
               />
               <br />
               <label>Price:</label>
-              <input
+              <input className='input-subscription'
                 type="text"
                 name="subscriptionPlanPrice"
                 value={newPlan.subscriptionPlanPrice}
                 onChange={handleChange}
               />
-              <button className="save-button-1" type="submit">
+              <button className="save-button-subscription" type="submit">
                 Save
               </button>
             </form>
@@ -135,9 +130,9 @@ const SubscriptionPlansManagementWindow = () => {
         </div>
 
         {plans.map((plan) => (
-          <div key={plan.subscriptionPlanId} className="plan-item">
+          <div key={plan.subscriptionPlanId} className="plan-item-subscription">
             <label>
-              <input
+              <input className='input-subscription'
                 type="checkbox"
                 checked={plan.selected}
                 onChange={() =>
@@ -149,9 +144,9 @@ const SubscriptionPlansManagementWindow = () => {
               {plan.subscriptionPlanName}
             </label>
             {plan.selected && (
-              <form className="plan-form">
+              <form className="plan-form-subscription">
                 <label>{`Plan ${plan.subscriptionPlanId} Name:`}</label>
-                <input
+                <input className='input-subscription'
                   type="text"
                   value={plan.subscriptionPlanName}
                   onChange={(e) => handleInputChange(plan.subscriptionPlanId, 'subscriptionPlanName', e.target.value)}
@@ -159,7 +154,7 @@ const SubscriptionPlansManagementWindow = () => {
                 />
                 <br />
                 <label>Description:</label>
-                <input
+                <input className='input-subscription'
                   type="text"
                   value={plan.subscriptionPlanDescription}
                   onChange={(e) => handleInputChange(plan.subscriptionPlanId, 'subscriptionPlanDescription', e.target.value)}
@@ -167,7 +162,7 @@ const SubscriptionPlansManagementWindow = () => {
                 />
                 <br />
                 <label>Price:</label>
-                <input
+                <input className='input-subscription'
                   type="text"
                   value={plan.subscriptionPlanPrice}
                   onChange={(e) => handleInputChange(plan.subscriptionPlanId, 'subscriptionPlanPrice', e.target.value)}
@@ -177,12 +172,12 @@ const SubscriptionPlansManagementWindow = () => {
             )}
             <div className="subscription-plans-management-buttons">
               <button
-                className={`edit-button-1 ${editMode ? 'active' : ''}`}
+                className={`edit-button-subscription ${editMode ? 'active' : ''}`}
                 onClick={() => setEditMode(!editMode)}
               >
                 Edit
               </button>
-              <button className="save-button-1" onClick={handleSave} disabled={!editMode}>
+              <button className="save-button-subscription" onClick={handleSave} disabled={!editMode}>
                 Save
               </button>
             </div>

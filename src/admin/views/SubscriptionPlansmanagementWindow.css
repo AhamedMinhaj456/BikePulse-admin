@@ -12,7 +12,15 @@
     text-align: center;
 }
 
-.plan-form {
+.input-subscription {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.plan-form-subscription {
   background-color: #F1F4F7;
   margin-bottom: 20px;
   width: 100%;
@@ -24,13 +32,13 @@
   transition: transform 0.3s, background-color 0.3s; 
 }
 
-.plan-form:hover {
+.plan-form-subscription:hover {
   border-color: #007bff; 
   transform: translateY(-5px); 
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
  
-.plan-item {
+.plan-item-subscription {
     background-color: #F1F4F7;
     margin-bottom: 20px;
     width: 100%;
@@ -42,13 +50,13 @@
     transition: transform 0.3s, background-color 0.3s; 
 }
 
-.plan-item:hover {
+.plan-item-subscription:hover {
   border-color: #007bff; 
   transform: translateY(-5px); 
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
   
-.plan-item p {
+.plan-item-subscription p {
     margin-bottom: 15px; 
     transition: color 0.3s;  
 }
@@ -60,8 +68,8 @@
     margin-top: 20px;
 }
   
-.save-button-1,
-.edit-button-1 {
+.save-button-subscription,
+.edit-button-subscription {
     background-color: #4caf50;
     color: #fff;
     padding: 10px 20px;  
@@ -71,8 +79,8 @@
     margin-bottom: 20px;
 }
   
-.save-button-1:hover,
-.edit-button-1:hover {
+.save-button-subscription:hover,
+.edit-button-subscription:hover {
     background-color: #9dc8ec;
 }
 

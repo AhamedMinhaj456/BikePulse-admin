@@ -8,6 +8,7 @@ import UserManagementIcon from '../../assets/UserManagement.svg';
 import SubscriptionIcon from '../../assets/Subscription.svg';
 import FaultIcon from '../../assets/Category.svg';
 import AccountSettingIcon from '../../assets/Settings.svg';
+import ServiceIcon from '../../assets/Service.svg';
 import PaymentManagementIcon from '../../assets/payment.svg';
 import ProfileIcon from '../../assets/User.svg';
 import Account_Setting_Icon from '../../assets/account_setting.svg';
@@ -56,6 +57,11 @@ const LeftSidebar = () => {
         <Link to="/subscription-plans" className="list-item">
           <img src={SubscriptionIcon} alt="Subscription" />
           <span>Subscription Plans Management</span>
+        </Link>
+
+        <Link to="/service-plans" className="list-item">
+          <img src={ServiceIcon} alt="Service" />
+          <span>Service Plans Management</span>
         </Link>
 
         <Link to="/fault-management" className="list-item">

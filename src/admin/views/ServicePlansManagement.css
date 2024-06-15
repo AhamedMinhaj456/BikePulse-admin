@@ -1,0 +1,148 @@
+.service-plans-management-content {
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px;
+  margin-right: 80px;
+  padding: 20px;
+}
+
+.service-plans-management-content h2, h3 {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.input-service {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.plan-form-service {
+  background-color: #F1F4F7;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.plan-form-service:hover {
+  border-color: #007bff; 
+  transform: translateY(-5px); 
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
+}
+
+.plan-item-service {
+  background-color: #F1F4F7;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s, background-color 0.3s; 
+}
+
+.plan-item-serive:hover {
+  border-color: #007bff; 
+  transform: translateY(-5px); 
+  background: linear-gradient(to bottom, #eaeede, #9baab7);
+}
+
+.plan-item-service p {
+  margin-bottom: 15px; 
+  transition: color 0.3s;  
+}
+
+.service-plans-management-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.save-button-service,
+.edit-button-service {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;  
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.save-button-service:hover,
+.edit-button-service:hover {
+  background-color: #9dc8ec;
+}
+
+.hamburger-icon {
+  display: block;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .service-plans-management-content {
+    margin-left: 0; 
+  }
+
+  .plan-list-service {
+    width: 100%; 
+  }
+
+  .sidebar-icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+  }
+
+  .sidebar-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .save-button-service {
+    margin-top: 10px;
+  }
+}
+
+.plan-form-service label,
+.plan-item-serive label {
+  display: block;
+  margin-top: 10px;
+}
+
+.plan-form-service input[type="file"],
+.plan-item-serive input[type="file"] {
+  margin-top: 10px;
+}
+
+.plan-form-service img,
+.plan-item-serive img {
+  display: block;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

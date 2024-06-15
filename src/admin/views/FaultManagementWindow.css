@@ -18,6 +18,14 @@
   text-align: center;
 }
 
+.input-fault {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .table {
   align-items: center;
   text-align: center;
@@ -55,11 +63,11 @@ tbody tr:hover td {
   color: #333;
 }
 
-.add-input {
+.add-input-fault {
   margin-bottom: 10px;
 }
 
-.action-button {
+.action-button-fault {
   background-color: #4caf50;
   color: #fff;
   padding: 4px;
@@ -71,7 +79,7 @@ tbody tr:hover td {
   margin-top: 10px;
 }
 
-.action-button:hover{
+.action-button-fault:hover{
   background-color: #9dc8ec;
 }
 
@@ -89,7 +97,7 @@ tbody tr:hover td {
   margin-bottom: 10px;
 }
 
-.add-button {
+.add-button-fault {
   background-color: #4caf50;
   color: #fff;
   padding: 8px;
@@ -101,11 +109,11 @@ tbody tr:hover td {
   margin-top: 10px;
 }
 
-.add-button:hover{
+.add-button-fault:hover{
   background-color: #9dc8ec;
 }
 
-.next-button {
+.next-button-fault {
   background-color: #4caf50;
   color: #fff;
   padding: 8px;
@@ -117,7 +125,7 @@ tbody tr:hover td {
   margin-top: 10px;
 }
 
-.next-button:hover {
+.next-button-fault:hover {
   background-color: #9dc8ec;
 }
 
@@ -159,8 +167,8 @@ tbody tr:hover td {
   margin-top: 20px;
 }
 
-.save-button,
-.edit-button {
+.save-button-fault,
+.edit-button-fault {
   background-color: #4caf50;
   color: #fff;
   padding: 10px 20px;
@@ -170,8 +178,8 @@ tbody tr:hover td {
   margin-bottom: 20px;
 }
 
-.save-button:hover,
-.edit-button:hover {
+.save-button-fault:hover,
+.edit-button-fault:hover {
   background-color: #9dc8ec;
 }
 
