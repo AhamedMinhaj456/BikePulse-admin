@@ -4,16 +4,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'admin-flow', url: 'https://github.com/AhamedMinhaj456/BikePulse-admin'
+                git url: 'https://github.com/AhamedMinhaj456/BikePulse-admin'
             }
         }
         
         stage('Build Docker Image') {
             steps {
                 script {
-                    dir('frontend') {
-                        docker.build('admin-flow-frontend')
-                    }
+                    // Build the Docker image using the Dockerfile in the root directory
+                    docker.build('bikepulse-admin', '.')
                 }
             }
         }
@@ -21,13 +20,13 @@ pipeline {
         stage('Run Container') {
             steps {
                 script {
-                    def dockerImage = docker.image('admin-flow-frontend')
-                    def dockerContainer = dockerImage.run('-p 3000:3000', '--name admin-flow-container')
+                    // Run the Docker container from the built image
+                    def dockerImage = docker.image('bikepulse-admin')
+                    def dockerContainer = dockerImage.run('-p 3000:3000 --name admin-flow-container')
 
                     env.CONTAINER_ID = dockerContainer.id
                 }
             }
         }
     }
-    
 }
