@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'admin-flow', url: 'https://github.com/AhamedMinhaj456/Motorbike_Service_Station_Reservation_System'
+                git branch: 'admin-flow', url: 'https://github.com/AhamedMinhaj456/BikePulse-admin'
             }
         }
         
