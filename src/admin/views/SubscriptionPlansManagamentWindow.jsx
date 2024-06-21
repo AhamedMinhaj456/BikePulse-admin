@@ -20,14 +20,14 @@ const SubscriptionPlansManagementWindow = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8096/subscriptionPlan/subscriptionPlan');
+      const response = await axios.get('http://localhost:8095/subscriptionPlan/subscriptionPlan');
       setPlans(response.data);
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error('Error fetching plans:', error);
     }
   };
-  const [editMode, setEditMode] = useState(false);
 
+  const [editMode, setEditMode] = useState(false);
 
   const handleInputChange = (id, field, value) => {
     setPlans((prevPlans) =>
@@ -37,16 +37,15 @@ const SubscriptionPlansManagementWindow = () => {
 
   const handleSave = () => {
     setEditMode(false);
-    axios.put('http://localhost:8096/subscriptionPlan/updateMultipleSubscriptionPlans', plans)
+    axios.put('http://localhost:8095/subscriptionPlan/updateMultipleSubscriptionPlans', plans)
       .then(response => {
-        alert('Plan Updated Successfullly!');
+        alert('Plan Updated Successfully!');
       })
       .catch(error => {
         console.error('Error saving plans:', error);
         alert('Failed to save plans. Please try again.');
       });
   };
-
 
   const [newPlan, setNewPlan] = useState({
     subscriptionPlanName: '',
@@ -65,15 +64,27 @@ const SubscriptionPlansManagementWindow = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8096/subscriptionPlan/addSubscriptionPlan', newPlan);
+      await axios.post('http://localhost:8095/subscriptionPlan/addSubscriptionPlan', newPlan);
       alert('Subscription Plan Successfully Added');
       setNewPlan({
         subscriptionPlanName: '',
         subscriptionPlanDescription: '',
         subscriptionPlanPrice: '',
       });
+      fetchData(); // Fetch latest plans after adding new plan
     } catch (err) {
       alert(err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8095/subscriptionPlan/deleteSubscriptionPlan/${id}`);
+      alert('Subscription Plan Deleted Successfully');
+      fetchData(); // Fetch latest plans after deleting a plan
+    } catch (err) {
+      console.error('Error deleting plan:', err);
+      alert('Failed to delete plan. Please try again.');
     }
   };
 
@@ -180,21 +191,12 @@ const SubscriptionPlansManagementWindow = () => {
               <button className="save-button-subscription" onClick={handleSave} disabled={!editMode}>
                 Save
               </button>
+              <button className="delete-button-subscription" onClick={() => handleDelete(plan.subscriptionPlanId)}>
+                Delete
+              </button>
             </div>
           </div>
         ))}
-
-        {/* <div className="subscription-plans-management-buttons">
-          <button
-            className={`edit-button ${editMode ? 'active' : ''}`}
-            onClick={() => setEditMode(!editMode)}
-          >
-            Edit
-          </button>
-          <button className="save-button" onClick={handleSave} disabled={!editMode}>
-            Save
-          </button>
-        </div> */}
       </div>
 
       <RightSidebar />

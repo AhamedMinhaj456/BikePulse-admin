@@ -28,7 +28,7 @@
   background-color: #F1F4F7;
   margin-bottom: 20px;
   border: 1px solid transparent; 
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@
   
 .user-item:hover {
   transform: translateY(-5px); 
-  border-color: #007bff; 
+  /* border-color: #007bff;  */
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
 

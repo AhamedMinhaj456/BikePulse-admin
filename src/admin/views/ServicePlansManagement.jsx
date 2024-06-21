@@ -6,73 +6,63 @@ import axios from 'axios';
 import { FaBars } from 'react-icons/fa';
 
 const ServicePlansManagement = () => {
-  const [plans, setPlans] = useState([
-    { servicePlanId: 1, servicePlanName: 'Service Plan 1', servicePlanDescription: '', servicePlanPrice: '', servicePlanImage: '', selected: false },
-    { servicePlanId: 2, servicePlanName: 'Service Plan 2', servicePlanDescription: '', servicePlanPrice: '', servicePlanImage: '', selected: false },
-    { servicePlanId: 3, servicePlanName: 'Service Plan 3', servicePlanDescription: '', servicePlanPrice: '', servicePlanImage: '', selected: false },
-  ]);
+  const [plans, setPlans] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedPlanId, setSelectedPlanId] = useState(null);
+  const [newPlan, setNewPlan] = useState({
+    serviceType: '',
+    serviceTypeDescription: '',
+    serviceTypeImage: '',
+  });
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // Backend developer: Fetch user data from the backend and update state
-    // Example:
     fetchData();
   }, []);
 
-  // Backend connection: Function to fetch user data from the backend
   const fetchData = async () => {
     try {
-      // Example using axios:
-      const response = await axios.get('http://localhost:8096/servicePlan/servicePlan');
+      const response = await axios.get('http://localhost:8095/serviceType/serviceType');
       setPlans(response.data);
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error('Error fetching service plans:', error);
     }
   };
-  
-  const [editMode, setEditMode] = useState(false);
 
   const handleInputChange = (id, field, value) => {
     setPlans((prevPlans) =>
-      prevPlans.map((plan) => (plan.servicePlanId === id ? { ...plan, [field]: value } : plan))
+      prevPlans.map((plan) => (plan.serviceTypeId === id ? { ...plan, [field]: value } : plan))
     );
   };
 
   const handleImageChange = (id, file) => {
     setPlans((prevPlans) =>
-      prevPlans.map((plan) => (plan.servicePlanId === id ? { ...plan, servicePlanImage: file } : plan))
+      prevPlans.map((plan) => (plan.serviceTypeId === id ? { ...plan, serviceTypeImage: file } : plan))
     );
   };
 
-  // Backend connection: Function to save plans to the backend
   const handleSave = async () => {
-    setEditMode(false);
     try {
       const updatedPlans = new FormData();
       plans.forEach((plan) => {
-        updatedPlans.append('plans', JSON.stringify(plan));
-        if (plan.servicePlanImage instanceof File) {
-          updatedPlans.append('images', plan.servicePlanImage);
+        updatedPlans.append('serviceTypes', JSON.stringify(plan));
+        if (plan.serviceTypeImage instanceof File) {
+          updatedPlans.append('images', plan.serviceTypeImage);
         }
       });
 
-      await axios.put('http://localhost:8096/servicePlan/updateMultipleServicePlans', updatedPlans, {
+      await axios.put('http://localhost:8095/serviceType/updateServiceType', updatedPlans, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      alert('Plans Updated Successfully!');
+      alert('Service Plans Updated Successfully!');
+      setEditMode(false);
     } catch (error) {
-      console.error('Error saving plans:', error);
-      alert('Failed to save plans. Please try again.');
+      console.error('Error saving service plans:', error);
+      alert('Failed to save service plans. Please try again.');
     }
   };
-
-  const [newPlan, setNewPlan] = useState({
-    servicePlanName: '',
-    servicePlanDescription: '',
-    servicePlanPrice: '',
-    servicePlanImage: null,
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -85,37 +75,60 @@ const ServicePlansManagement = () => {
   const handleNewImageChange = (e) => {
     setNewPlan((prevPlan) => ({
       ...prevPlan,
-      servicePlanImage: e.target.files[0],
+      serviceTypeImage: e.target.files[0],
     }));
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    if (!newPlan.serviceTypeImage) {
+      alert('Please select an image for the service plan.');
+      return;
+    }
+
     const formData = new FormData();
-    formData.append('servicePlanName', newPlan.servicePlanName);
-    formData.append('servicePlanDescription', newPlan.servicePlanDescription);
-    formData.append('servicePlanPrice', newPlan.servicePlanPrice);
-    formData.append('servicePlanImage', newPlan.servicePlanImage);
+    formData.append('serviceType', newPlan.serviceType);
+    formData.append('serviceTypeDescription', newPlan.serviceTypeDescription);
+    formData.append('serviceTypeImage', newPlan.serviceTypeImage);
 
     try {
-      await axios.post('http://localhost:8096/servicePlan/addServicePlan', formData, {
+      await axios.post('http://localhost:8095/serviceType/addServiceType', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       alert('Service Plan Successfully Added');
       setNewPlan({
-        servicePlanName: '',
-        servicePlanDescription: '',
-        servicePlanPrice: '',
-        servicePlanImage: null,
+        serviceType: '',
+        serviceTypeDescription: '',
+        serviceTypeImage: '',
       });
+      fetchData();
     } catch (err) {
-      alert(err);
+      console.error('Error adding service plan:', err);
+      alert('Failed to add service plan. Please try again.');
     }
   };
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this service plan?')) {
+      try {
+        await axios.delete(`http://localhost:8095/serviceType/deleteServiceType/${id}`);
+        alert('Service Plan Deleted Successfully');
+        fetchData();
+      } catch (err) {
+        console.error('Error deleting service plan:', err);
+        alert('Failed to delete service plan. Please try again.');
+      }
+    }
+  };
+
+  const toggleEditMode = (id) => {
+    setEditMode(true);
+    setSelectedPlanId(id);
+  };
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -139,31 +152,23 @@ const ServicePlansManagement = () => {
               <label>Name</label>
               <input className='input-service'
                 type="text"
-                name="servicePlanName"
-                value={newPlan.servicePlanName}
+                name="serviceType"
+                value={newPlan.serviceType}
                 onChange={handleChange}
               />
               <br />
               <label>Description:</label>
               <input className='input-service'
                 type="text"
-                name="servicePlanDescription"
-                value={newPlan.servicePlanDescription}
-                onChange={handleChange}
-              />
-              <br />
-              <label>Price:</label>
-              <input className='input-service'
-                type="text"
-                name="servicePlanPrice"
-                value={newPlan.servicePlanPrice}
+                name="serviceTypeDescription"
+                value={newPlan.serviceTypeDescription}
                 onChange={handleChange}
               />
               <br />
               <label>Image:</label>
               <input className='input-service'
                 type="file"
-                name="servicePlanImage"
+                name="serviceTypeImage"
                 onChange={handleNewImageChange}
               />
               <button className="save-button-service" type="submit">
@@ -174,73 +179,53 @@ const ServicePlansManagement = () => {
         </div>
 
         {plans.map((plan) => (
-          <div key={plan.servicePlanId} className="plan-item-service">
-            <label>
+          <div key={plan.serviceTypeId} className="plan-item-service">
+            <label>{`Service Type: ${plan.serviceType}`}</label>
+            <form className="plan-form">
+              <label>Description:</label>
               <input className='input-service'
-                type="checkbox"
-                checked={plan.selected}
-                onChange={() =>
-                  setPlans((prevPlans) =>
-                    prevPlans.map((p) => (p.servicePlanId === plan.servicePlanId ? { ...p, selected: !p.selected } : p))
-                  )
-                }
+                type="text"
+                value={plan.serviceTypeDescription}
+                onChange={(e) => handleInputChange(plan.serviceTypeId, 'serviceTypeDescription', e.target.value)}
+                readOnly={editMode && selectedPlanId !== plan.serviceTypeId}
               />
-              {plan.servicePlanName}
-            </label>
-            {plan.selected && (
-              <form className="plan-form">
-                <label>{`Plan ${plan.servicePlanId} Name:`}</label>
-                <input className='input-service'
-                  type="text"
-                  value={plan.servicePlanName}
-                  onChange={(e) => handleInputChange(plan.servicePlanId, 'servicePlanName', e.target.value)}
-                  readOnly={!editMode}
-                />
-                <br />
-                <label>Description:</label>
-                <input className='input-service'
-                  type="text"
-                  value={plan.servicePlanDescription}
-                  onChange={(e) => handleInputChange(plan.servicePlanId, 'servicePlanDescription', e.target.value)}
-                  readOnly={!editMode}
-                />
-                <br />
-                <label>Price:</label>
-                <input className='input-service'
-                  type="text"
-                  value={plan.servicePlanPrice}
-                  onChange={(e) => handleInputChange(plan.servicePlanId, 'servicePlanPrice', e.target.value)}
-                  readOnly={!editMode}
-                />
-                <br />
-                <label>Image:</label>
-                <input className='input-service'
-                  type="file"
-                  onChange={(e) => handleImageChange(plan.servicePlanId, e.target.files[0])}
-                  disabled={!editMode}
-                />
-                {plan.servicePlanImage && (
-                  <div>
-                    <img
-                      src={typeof plan.servicePlanImage === 'string' ? plan.servicePlanImage : URL.createObjectURL(plan.servicePlanImage)}
-                      alt={plan.servicePlanName}
-                      width="100"
-                      height="100"
-                    />
-                  </div>
-                )}
-              </form>
-            )}
+              <br />
+              <label>Image:</label>
+              <input className='input-service'
+                type="file"
+                onChange={(e) => handleImageChange(plan.serviceTypeId, e.target.files[0])}
+                disabled={editMode && selectedPlanId !== plan.serviceTypeId}
+              />
+              {plan.serviceTypeImage && (
+                <div>
+                  <img
+                    src={typeof plan.serviceTypeImage === 'string' ? plan.serviceTypeImage : URL.createObjectURL(plan.serviceTypeImage)}
+                    alt={plan.serviceType}
+                    width="100"
+                    height="100"
+                  />
+                </div>
+              )}
+            </form>
             <div className="service-plans-management-buttons">
-              <button
-                className={`edit-button-service ${editMode ? 'active' : ''}`}
-                onClick={() => setEditMode(!editMode)}
-              >
-                Edit
-              </button>
-              <button className="save-button-service" onClick={handleSave} disabled={!editMode}>
-                Save
-              </button>
+              {!editMode && (
+                <button
+                  className="edit-button-service"
+                  onClick={() => toggleEditMode(plan.serviceTypeId)}
+                >
+                  Edit
+                </button>
+              )}
+              {editMode && selectedPlanId === plan.serviceTypeId && (
+                <>
+                  <button className="save-button-service" onClick={handleSave}>
+                    Save
+                  </button>
+                  <button className="delete-button-service" onClick={() => handleDelete(plan.serviceTypeId)}>
+                    Delete
+                  </button>
+                </>
+              )}
             </div>
           </div>
         ))}

@@ -32,8 +32,7 @@
   transition: transform 0.3s, background-color 0.3s; 
 }
 
-.plan-form-service:hover {
-  border-color: #007bff; 
+.plan-form-service:hover { 
   transform: translateY(-5px); 
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
@@ -50,8 +49,7 @@
   transition: transform 0.3s, background-color 0.3s; 
 }
 
-.plan-item-serive:hover {
-  border-color: #007bff; 
+.plan-item-service:hover {
   transform: translateY(-5px); 
   background: linear-gradient(to bottom, #eaeede, #9baab7);
 }
@@ -69,7 +67,8 @@
 }
 
 .save-button-service,
-.edit-button-service {
+.edit-button-service,
+.delete-button-service {
   background-color: #4caf50;
   color: #fff;
   padding: 10px 20px;  
@@ -80,7 +79,8 @@
 }
 
 .save-button-service:hover,
-.edit-button-service:hover {
+.edit-button-service:hover,
+.delete-button-service:hover {
   background-color: #9dc8ec;
 }
 
