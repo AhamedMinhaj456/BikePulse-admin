@@ -22,7 +22,7 @@ const ServicePlansManagement = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8095/serviceType/serviceType');
+      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/serviceType/serviceType');
       setPlans(response.data);
     } catch (error) {
       console.error('Error fetching service plans:', error);
@@ -51,7 +51,7 @@ const ServicePlansManagement = () => {
         }
       });
 
-      await axios.put('http://localhost:8095/serviceType/updateServiceType', updatedPlans, {
+      await axios.put('https://motorbike-service-station-reservation.onrender.com/serviceType/updateServiceType', updatedPlans, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -93,11 +93,13 @@ const ServicePlansManagement = () => {
     formData.append('serviceTypeImage', newPlan.serviceTypeImage);
 
     try {
-      await axios.post('http://localhost:8095/serviceType/addServiceType', formData, {
+      console.log('Submitting new plan:', newPlan); // Debugging log
+      const response = await axios.post('https://motorbike-service-station-reservation.onrender.com/serviceType/addServiceType', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log('Response:', response); // Debugging log
       alert('Service Plan Successfully Added');
       setNewPlan({
         serviceType: '',
@@ -106,7 +108,18 @@ const ServicePlansManagement = () => {
       });
       fetchData();
     } catch (err) {
-      console.error('Error adding service plan:', err);
+      if (err.response) {
+        // Server responded with a status other than 200 range
+        console.error('Error response data:', err.response.data);
+        console.error('Error response status:', err.response.status);
+        console.error('Error response headers:', err.response.headers);
+      } else if (err.request) {
+        // Request was made but no response was received
+        console.error('Error request:', err.request);
+      } else {
+        // Something else caused the error
+        console.error('Error message:', err.message);
+      }
       alert('Failed to add service plan. Please try again.');
     }
   };
@@ -114,7 +127,7 @@ const ServicePlansManagement = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this service plan?')) {
       try {
-        await axios.delete(`http://localhost:8095/serviceType/deleteServiceType/${id}`);
+        await axios.delete(`https://motorbike-service-station-reservation.onrender.com/serviceType/deleteServiceType/${id}`);
         alert('Service Plan Deleted Successfully');
         fetchData();
       } catch (err) {

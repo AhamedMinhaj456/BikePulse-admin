@@ -23,7 +23,7 @@ const AdminHomePage = () => {
   async function saveAdmin(event) {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:8095/admin/save', {
+      await axios.post('https://motorbike-service-station-reservation.onrender.com/admin/save', {
         adminName,
         adminEmail,
         adminPassword,
@@ -39,7 +39,7 @@ const AdminHomePage = () => {
   async function loginAdmin(event) {
     event.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8095/admin/login', {
+      const response = await axios.post('https://motorbike-service-station-reservation.onrender.com/admin/login', {
         adminEmail,
         adminPassword,
       });

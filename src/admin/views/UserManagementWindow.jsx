@@ -22,7 +22,7 @@ const UserManagementWindow = () => {
 
  const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8095/customer/getCustomer');
+      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/customer/getCustomer');
       setCustomers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);

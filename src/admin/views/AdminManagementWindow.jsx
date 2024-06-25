@@ -27,7 +27,7 @@ const AdminManagementWindow = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8095/admin/getAdmin');
+      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/admin/getAdmin');
       setAdmins(response.data);
     } catch (error) {
       console.error('Error fetching admins:', error);

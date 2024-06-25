@@ -46,7 +46,7 @@ const ShopDetailsWindow = ({ shopId }) => {
   useEffect(() => {
     if (shopId && currentStatus.activeStatus !== '') {
       const status = activeStatus ? 'active' : 'deactive';
-      axios.put(`http://localhost:8095/shop/${shopId}/active-status`, null, {
+      axios.put(`https://motorbike-service-station-reservation.onrender.com/shop/${shopId}/active-status`, null, {
         params: { activeStatus: status }
       }).then(() => {
       });
@@ -55,7 +55,7 @@ const ShopDetailsWindow = ({ shopId }) => {
 
   useEffect(() => {
     if (shopId && currentStatus.approvedStatus !== '') {
-      axios.put(`http://localhost:8095/shop/${shopId}/approved-status`, null, {
+      axios.put(`https://motorbike-service-station-reservation.onrender.com/shop/${shopId}/approved-status`, null, {
         params: { approvedStatus }
       }).then(() => {
       });
@@ -63,7 +63,7 @@ const ShopDetailsWindow = ({ shopId }) => {
   }, [approvedStatus]);
 
   const fetchUserStatus = async () => {
-    const response = await axios.get(`http://localhost:8095/shop/${shopId}`);
+    const response = await axios.get(`https://motorbike-service-station-reservation.onrender.com/shop/${shopId}`);
     setCurrentStatus({
       activeStatus: response.data.activeStatus,
       approvedStatus: response.data.approvedStatus,

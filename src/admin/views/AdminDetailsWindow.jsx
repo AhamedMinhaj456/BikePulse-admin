@@ -46,7 +46,7 @@ const AdminDetailsWindow = ({ adminId }) => {
   useEffect(() => {
     if (adminId && currentStatus.activeStatus !== '') {
       const status = activeStatus ? 'active' : 'deactive';
-      axios.put(`http://localhost:8095/admin/${adminId}/active-status`, null, {
+      axios.put(`https://motorbike-service-station-reservation.onrender.com/admin/${adminId}/active-status`, null, {
         params: { activeStatus: status }
       }).then(() => {
       });
@@ -55,7 +55,7 @@ const AdminDetailsWindow = ({ adminId }) => {
 
 
   const fetchUserStatus = async () => {
-    const response = await axios.get(`http://localhost:8095/admin/${adminId}`);
+    const response = await axios.get(`https://motorbike-service-station-reservation.onrender.com/admin/${adminId}`);
     setCurrentStatus({
       activeStatus: response.data.activeStatus,
 

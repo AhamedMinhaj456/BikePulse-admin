@@ -27,7 +27,7 @@ const ShopManagementWindow = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8095/shop/getShop');
+      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/shop/getShop');
       setShops(response.data);
     } catch (error) {
       console.error('Error fetching shops:', error);
