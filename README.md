@@ -21,8 +21,8 @@ You can access the admin portal at the following URL:
 
 ## Additional Links
 
-- **Shop Website**: [Bike Pulse Shop](#) *(Link to be updated)*
-- **Customer Website**: [Bike Pulse Customer Portal](#) *(Link to be updated)*
+- **Customer Website**: [Bike Pulse Customer Portal](https://bikepulse-customer.vercel.app/)
+- **Shop Website**: [Bike Pulse Shop Portal](#) *(Link to be updated)*
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ You can access the admin portal at the following URL:
 
 ## Support
 
-For any issues or assistance, please contact our support team at support@bikepulse.com.
+For any issues or assistance, please contact our support team at bikepulsereservation@gmail.com.
 
 ## Contributions
 
