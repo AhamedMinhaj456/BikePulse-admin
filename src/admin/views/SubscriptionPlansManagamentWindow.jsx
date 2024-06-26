@@ -20,7 +20,7 @@ const SubscriptionPlansManagementWindow = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/subscriptionPlan/subscriptionPlan');
+      const response = await axios.get('http://localhost:8095/subscriptionPlan/subscriptionPlan');
       setPlans(response.data);
     } catch (error) {
       console.error('Error fetching plans:', error);
@@ -37,7 +37,7 @@ const SubscriptionPlansManagementWindow = () => {
 
   const handleSave = () => {
     setEditMode(false);
-    axios.put('https://motorbike-service-station-reservation.onrender.com/subscriptionPlan/updateMultipleSubscriptionPlans', plans)
+    axios.put('http://localhost:8095/subscriptionPlan/updateMultipleSubscriptionPlans', plans)
       .then(response => {
         alert('Plan Updated Successfully!');
       })
@@ -64,7 +64,7 @@ const SubscriptionPlansManagementWindow = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://motorbike-service-station-reservation.onrender.com/subscriptionPlan/addSubscriptionPlan', newPlan);
+      await axios.post('http://localhost:8095/subscriptionPlan/addSubscriptionPlan', newPlan);
       alert('Subscription Plan Successfully Added');
       setNewPlan({
         subscriptionPlanName: '',
@@ -79,7 +79,7 @@ const SubscriptionPlansManagementWindow = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://motorbike-service-station-reservation.onrender.com/subscriptionPlan/deleteSubscriptionPlan/${id}`);
+      await axios.delete(`http://localhost:8095/subscriptionPlan/deleteSubscriptionPlan/${id}`);
       alert('Subscription Plan Deleted Successfully');
       fetchData(); // Fetch latest plans after deleting a plan
     } catch (err) {

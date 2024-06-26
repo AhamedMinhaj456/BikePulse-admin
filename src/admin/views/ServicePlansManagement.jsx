@@ -22,7 +22,7 @@ const ServicePlansManagement = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/serviceType/serviceType');
+      const response = await axios.get('http://localhost:8095/serviceType/serviceType');
       setPlans(response.data);
     } catch (error) {
       console.error('Error fetching service plans:', error);
@@ -51,7 +51,7 @@ const ServicePlansManagement = () => {
         }
       });
 
-      await axios.put('https://motorbike-service-station-reservation.onrender.com/serviceType/updateServiceType', updatedPlans, {
+      await axios.put('http://localhost:8095/serviceType/updateServiceType', updatedPlans, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -94,7 +94,7 @@ const ServicePlansManagement = () => {
 
     try {
       console.log('Submitting new plan:', newPlan); // Debugging log
-      const response = await axios.post('https://motorbike-service-station-reservation.onrender.com/serviceType/addServiceType', formData, {
+      const response = await axios.post('http://localhost:8095/serviceType/addServiceType', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -127,7 +127,7 @@ const ServicePlansManagement = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this service plan?')) {
       try {
-        await axios.delete(`https://motorbike-service-station-reservation.onrender.com/serviceType/deleteServiceType/${id}`);
+        await axios.delete(`http://localhost:8095/serviceType/deleteServiceType/${id}`);
         alert('Service Plan Deleted Successfully');
         fetchData();
       } catch (err) {

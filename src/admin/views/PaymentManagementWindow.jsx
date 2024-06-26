@@ -18,7 +18,7 @@ const PaymentManagementWindow = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://motorbike-service-station-reservation.onrender.com/payment/getPayments');
+      const response = await axios.get('hhttp://localhost:8095/payment/getPayments');
       setPayments(response.data);
     } catch (error) {
       console.error('Error fetching payments:', error);
